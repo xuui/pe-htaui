@@ -1,0 +1,15 @@
+{
+  "name": "pe-hta-shell",
+  "version": "0.1.0",
+  "description": "Windows PE Shell for HTA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xu.hel",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^3.0.0"
+  }
+}
