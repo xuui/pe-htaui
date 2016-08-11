@@ -1,5 +1,5 @@
 html,body{width:100%;height:100%;}
-body{position:relative;background:#eee;}
+body{position:relative;background:#eee url(wallpaper.jpg) no-repeat 50% 50%;background-size:cover;}
 a:hover,a:focus{text-decoration:none}
 
 
@@ -16,6 +16,8 @@ footer .navbar-right .dropdown-menu{left:auto;right:6px;}
 .modal-header .close{margin-top:3px;}
 
 .icon{text-align:center;padding:16px;}
+.icon,.icon a{color:#fff;outline:none;}
+.modal .icon,.modal .icon a{color:#333;}
 .icon i,.icon span{display:block;}
 .icon .glyphicon{font-size:32px;margin-bottom:5px;}
 
