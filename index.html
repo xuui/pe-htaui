@@ -18,14 +18,13 @@
 </script>
 </head>
 <body>
-
-<section class="container-fluid">
+<section class="container-fluid desktop">
   <div class="row">
     <div class="col-xs-1">
       <div class="icon">
         <a href="#DiskModal" data-toggle="modal">
           <i class="glyphicon glyphicon-hdd"></i>
-          <span>disk</span>
+          <span>Files</span>
         </a>
       </div>
       <div class="icon">
@@ -57,10 +56,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="DiskModalLabel">All Disk</h4>
+        <h4 class="modal-title" id="DiskModalLabel">Files</h4>
       </div>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">ROOT</a></li>
+        <li class="breadcrumb-item active">All Disk</li>
+      </ol>
       <div class="modal-body container-fluid">
-         <div class="row">
+        <div class="row">
           <div class="col-xs-3">
             <div class="icon">
               <i class="glyphicon glyphicon-hdd"></i>
@@ -109,7 +112,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav left-navbar">
       <li class="dropup">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-th"></i> <!--span class="caret"></span--></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-th"></i> <!--span class="caret">&#9776;</span--></a>
         <ul class="dropdown-menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -139,7 +142,7 @@
         </ul>
       </li>
     </ul>
-  </div><!-- /.container-fluid -->
+  </div>
 </nav>
 </footer>
 <script src="Frameworks/jquery.min.js"></script>

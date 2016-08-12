@@ -2,22 +2,23 @@ html,body{width:100%;height:100%;}
 body{position:relative;background:#eee url(wallpaper.jpg) no-repeat 50% 50%;background-size:cover;}
 a:hover,a:focus{text-decoration:none}
 
-
 footer{position:absolute;left:0;right:0;bottom:0;}
 footer .navbar{background:#fff;margin:0;border-radius:0;border-width:1px 0 0;border-color:rgba(0,0,0,.2);}
 footer .dropup .dropdown-menu{bottom:6px;margin-bottom:0;}
 footer .navbar-right .dropdown-menu{left:auto;right:6px;}
+
 .left-navbar{margin-left:-10px;}
 .dropdown-menu{top:0;margin:0;}
-
 .modal-backdrop,.modal-backdrop.in{opacity:0;}
 .modal-content{box-shadow:0 3px 15px rgba(0,0,0,.13);border-color:rgba(0,0,0,.07);}
 .modal-header{padding:5px 15px;}
 .modal-header .close{margin-top:3px;}
+.modal .breadcrumb{border-bottom: 1px solid #e5e5e5;margin:0}
 
 .icon{text-align:center;padding:16px;}
-.icon,.icon a{color:#fff;outline:none;}
-.modal .icon,.modal .icon a{color:#333;}
+.icon,.icon a{outline:none;}
 .icon i,.icon span{display:block;}
 .icon .glyphicon{font-size:32px;margin-bottom:5px;}
 
+.desktop .icon{text-shadow:0 1px 5px rgba(0,0,0,.34);}
+.desktop .icon,.desktop .icon a{color:#fff;}
