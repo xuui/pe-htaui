@@ -4,8 +4,7 @@
   "description": "Windows PE Shell for HTA.",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "gulp server",
-    "start":"gulp"
+    "test": "gulp server"
   },
   "repository": {
     "type": "git",
