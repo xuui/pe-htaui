@@ -1,0 +1,462 @@
+<html>
+<head><meta http-equiv=content-type content="text/html; charset=gb2312">
+ <title>qidizi工具集</title>
+ <style>
+  body
+  {
+    margin:0px 0px 0px 0px;
+  }
+ 
+  #leftWin
+  {
+     font-size:15px;
+     width:20%;
+     height:100%;
+     overflow-y:auto;
+     overflow-x:hidden;
+     border:1px solid green;
+     white-space:nowrap;
+     display:inline;
+     cursor:hand;
+     text-overflow:ellipsis;
+  }
+ 
+  #rightWin
+  {
+     text-align:left;
+     font-size:15px;
+     white-space:nowrap;
+     background:Silver;
+     width:80%;
+     height:100%;
+     overflow:auto;
+     border:1px solid black;
+     display:inline;
+  }
+ 
+  #top
+  {
+     border:1px solid black;
+     font-size:15px;
+  }
+ 
+  #childMenu
+  {
+     font-size:13px;
+     display:none;
+     padding-left:10px;
+  }
+ 
+  #titleDiv
+  {
+    display:none;
+    left:100px;
+    position:absolute;
+    border:1px solid orange;
+    background:white;
+    font-size:15px;   
+  }
+ 
+  #myMune
+  {
+    display:none;
+    position:absolute;
+    border:1px solid #808080;
+    width:170px; 
+    color:black;
+    background:#d4d0c8;
+    font-size:13px;
+    font-family:'宋体';
+    padding:5px,5px,5px,10px;
+    cursor:default;
+  }
+ 
+.selectSpan
+{
+  border:1px solid #0a246a;
+  background:#316ac5;
+}
+
+.unSelectSpan
+{
+  border:1px solid #d4d0c8;
+}
+ 
+ </style>
+</head>
+<body>
+<div id=leftWin onclick="checkObj();" onmousemove="showTitle()">
+  
+   <div id=top>+ 控制面板</div>
+     <div id=childMenu>    
+       <div onclick="runE('winmsd.exe')">系统信息</div>
+       <div onclick="runE('mmc.exe services.msc')">服务</div>
+       <div onclick="runE('mmc.exe compmgmt.msc')">计算机管理</div>
+       <div onclick="runE('mmc.exe diskmgmt.msc')">分区管理</div>
+       <div onclick="runE('mmc.exe devmgmt.msc')">硬件管理</div>
+       <div onclick="runE('mmc.exe gpedit.msc')">组策略</div>
+       <div onclick="runE('mmc.exe lusrmgr.msc')">用户管理</div>
+       <div onclick="runE('mmc.exe ntmsmgr.msc')">移动设备管理</div>
+       <div onclick="runE('mmc.exe secpol.msc')">本地安全设置</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser access.cpl')">辅助功能设置</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser appwiz.cpl')">卸载/删除</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser desk.cpl')">桌面属性</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser firewall.cpl')">防火墙</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser inetcpl.cpl')">ie选项</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser intl.cpl')">区域/语言</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser main.cpl')">鼠标</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser mmsys.cpl')">声音/音频属性</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser ncpa.cpl')">网络连接</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser netsetup.cpl')">网络共享设置向导</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser nusrmgr.cpl')">用户控制面板</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser powercfg.cpl')">电源管理</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser sysdm.cpl')">我的电脑</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser timedate.cpl')">时间日期</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser wscui.cpl')">安全中心</div>
+       <div onclick="runE('rundll32.exe shell32.dll,Control_RunDLLAsUser wuaucpl.cpl')">自动更新</div>
+       <div onclick="runE('mstsc.exe ')">xp远程桌面</div>
+     </div>
+
+   <div id=top>+ 注册表相关</div>
+   <div id=childMenu>
+     <div>无背景</div>
+   </div>
+  
+   <div id=top>+ 清除相关</div>
+     <div id=childMenu>
+       <div onclick="clearDealShurt()">清除桌面/开始无用快捷方式</div>
+     </div>
+  
+   <div id=top>+ cmd命令</div>
+     <div id=childMenu>
+       <div onclick="myCmd('ping 127.0.0.1')">ping 127.0.0.1(测试TCP/IP的正确性)</div>
+       <div onclick="myCmd('ipconfig -all')">查看本机ip设置</div>
+       <div onclick="myCmd('netstat -s -e')">查看本机所有开放的端口</div>
+       <div onclick="myCmd('arp -a')">探测arp绑定（动态和静态）列表</div>
+       <div onclick="myCmd('net config server /hidden:' + (confirm('隐藏 点[确定]/n显示 点[取消]') ? 'yes' : 'no') )">
+       在网络邻居上隐/显你的计算机</div>
+       <div onclick="myCmd('net view')">显示当前工作组服务器列表</div>
+       <div onclick="myCmd('net user')">本机用户列表</div>
+       <div onclick="myCmd('net user ' + prompt('输入用户名(非当前用户)','') + ' /delete')">
+       删除用户(配置文件还存在)</div>
+       <div onclick="myCmd('net use')">查看连接自己的网络邻居</div>
+       <div onclick="myCmd('net session')">查看使用自己共享用户时长</div>
+       <div onclick="myCmd('nslookup www.qidizi.com')">查看dns</div>
+       <div onclick="myCmd('nbtstat -a ' + prompt('请输入要查看局域网主机ip', '192.168.1.1'))">网络邻居信息</div>
+       <div onclick="myCmd('tracert www.google.com')">查看路由信息</div>
+       <div onclick="myCmd('pathping www.google.com ')">路由详细信息</div>
+       <div onclick="myCmd('net share ')">查看自己共享资源</div>
+       <div onclick="myCmd('net share ' + prompt('输入要删除共享名','')　+ ' /d')">删除共享</div>
+       <div onclick="myCmd('net share ' + prompt('共享中显示的名字','myshare') + '=' + prompt('输入要共享路径','c:') + ' /users:' + prompt('允许同时连接人数',1) )">增加共享</div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="myCmd('')"></div>
+       <div onclick="typeCmd()">输入自定义cmd命令</div>
+       
+     </div>
+    
+</div>
+
+<div id=rightWin></div>
+
+<div id=titleDiv></div>
+
+
+    
+     <div id=myMune>
+      <div onclick="location.reload();"
+           onmouseover="changeSpan(1,this);"
+           onmouseout="changeSpan(0,this);"
+           class=unSelectSpan
+      >刷新(<span style="text-decoration:underline;">f5</span>)</div>
+      <hr width=100% disabled>
+      <div
+        class=unSelectSpan
+        onmouseover="changeSpan(1,this);"
+        onmouseout="changeSpan(0,this);"
+        onclick="send2Notepad(htaFolder + '//' + htaName + '.hta');">
+        查看源文件</div>
+      <div
+        class=unSelectSpan
+        onmouseover="changeSpan(1,this);"
+        onmouseout="changeSpan(0,this);"
+        onclick="rightWin.innerHTML = '';">
+        清空右框内容</div>
+     </div>
+    
+</body>
+<script>
+var oExec;
+var titler;
+var selectObj = null;
+var htaName = location.pathname.match('/[^////]+(?=/.)/gi');
+var htaFolder = unescape(location.pathname).match('//w/:[^/:]{5,}/gi).toString().split(htaName + ".hta"')[0];
+
+
+function myAlert(text, noHtml)
+{//自定义提示窗口 
+         if (noHtml)
+         {       
+           rightWin.insertAdjacentText("beforeEnd",  "-----------------/n/n" + text);
+         }else
+          {      
+            rightWin.insertAdjacentHTML("beforeEnd",  '<hr width=100%>' + text);         
+          }
+}
+
+window.onerror = function(sMessage,sUrl,sLine)
+{
+   var str = "";
+
+    str += " 错误信息:" + sMessage + "/n";
+
+    str += " 错误地址:" + sUrl + "/n";
+
+    str += " 错误行数:" + sLine + "/n";
+
+    str += "<=========调用堆栈=========>/n";
+
+    var func = window.onerror.caller;
+
+    var index = 0;
+
+    while(func!=null){
+
+       str += "第" + index + "个函数：" + func + "/n";
+
+       str += "第" + index + "个函数：参数表："
+
+       for(var i=0;i<func.arguments.length;i++){
+
+           str += func.arguments[i] + ",";
+
+       }
+
+       str += "/n===================/n";
+
+       func = func.caller;
+
+       index++;
+
+    }
+
+    myAlert(str);
+   
+   return true;
+}
+
+//--右键菜单相关
+
+function document.body.onkeypress()
+{
+  showMymune(0);
+}
+
+function document.body.onclick()
+{
+  showMymune(0);
+}
+
+function document.body.oncontextmenu()
+{
+  showMymune(1);
+  return false;
+}
+
+function showMymune(yes)
+{
+  if (yes)
+  {
+   var e = event;
+   myMune.style.top = e.y;
+   myMune.style.left = e.x;  
+   myMune.style.display = "block";
+  }else
+   {
+     myMune.style.display = "none";
+   }  
+}
+
+
+function changeSpan(yes, e)
+{ 
+  if (yes)
+  {
+     e.className = "selectSpan";
+  }else
+   {
+      e.className = "unSelectSpan";
+   }
+}
+
+//--右键菜单相关
+
+//--全局
+
+function wshell()
+{//调用shell控件
+   try
+   {
+      return new ActiveXObject("WScript.Shell");
+   }catch(e)
+    {
+        myAlert("出错了：不能创建[WScript.Shell]文件操作对象！<br>"
+              + "下列操作无效。"
+               );
+        return null;
+    }
+}
+
+function fso()
+{//调用文件控件
+
+   try
+   {
+      return new ActiveXObject("Scripting.FileSystemObject");
+   }catch(e)
+    {
+        myAlert("出错：不能创建[Scripting.FileSystemObject]文件读写对象！<br>"
+              + "下列调用无效。"
+               );
+        return null;
+    }  
+}
+
+function freeRam()
+{//释放内存  
+   setTimeout("CollectGarbage();" , 1000);
+}
+//--全局
+
+//--左框列表
+function checkObj()
+{
+   var obj = event.srcElement;
+  
+   switch (obj.id)
+   {
+       case "top":
+           if (obj.nextSibling.style.display == "block")
+           {
+             obj.nextSibling.style.display = "none";             
+             selectObj = null;
+           }else
+            {
+              obj.nextSibling.style.display = "block";
+             
+              if (selectObj != null)
+              {
+                 selectObj.nextSibling.style.display = "none";
+              }
+             
+              selectObj = obj;
+            }
+           break;
+       case "childMenu":
+           break;
+       default:
+           ;
+   }
+}
+
+function showTitle()
+{//document.title = event.srcElement.parentElement.id;
+  if (event.srcElement.parentElement.id == "childMenu")
+  {
+   titleDiv.innerText = event.srcElement.innerText;
+   titleDiv.style.top = event.y;
+   titleDiv.style.display = "block";
+   clearTimeout(titler);
+   titler = setTimeout("titleDiv.style.display='none';", 1000);
+  }
+}
+//--左框列表
+
+//--cmd菜单
+function typeCmd()
+{//输入自定义
+
+   var cmd = "";
+  
+   while ( (cmd != null) && (cmd == "") )
+   {
+      cmd = prompt("输入正确的命令", "");
+   }
+  
+   if (cmd != null)
+   {
+     myCmd(cmd);
+   }
+}
+
+function myCmd(cmd)
+{//执行cmd命令
+       if (cmd != '')
+       {
+         try
+         {
+          oExec = wshell().Exec(cmd);
+         }catch(e)
+          {
+             myAlert("执行[" + cmd + "]命令出错:<BR>" +　e.description);
+             return false;
+          }
+       }
+    
+       if (oExec.status == 0)
+       {
+         setTimeout("myCmd('')", 100);
+       }else
+        {
+           myAlert(oExec.StdOut.Readall(), true);
+           freeRam();
+        }
+}
+//--cmd菜单
+
+//----运行程序
+function runE(cmd)
+{//运行程序
+         try
+         {
+          wshell().Exec(cmd);
+         }catch(e)
+          {
+             myAlert("执行[" + cmd + "]命令出错:<BR>" +　e.description);
+          }
+}
+
+function send2Notepad(path)
+{//用记事本打开文件
+    wshell().run('Notepad.exe "' + path);
+    freeRam();
+}
+//----运行程序
+
+//清理相关
+function clearDealShurt()
+{
+   var shell = wshell();
+   var deskTop = myAlert(shell.SpecialFolders("DeskTop"));
+  
+   if (deskTop=="")
+   {
+     return myAlert("获取桌面路径失败,中止快捷方式清理.");
+   }
+  
+  
+}
+//清理相关
+</script>
+</html>
