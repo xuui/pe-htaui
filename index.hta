@@ -6,9 +6,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Windows PE Shell</title>
 <hta:application id="oHTA" applicationname="Xuui Shell"
+ border="window" borderstyle="normal" caption="yes" icon="Resources/icon.ico"
+ maximizebutton="yes" minimizebutton="yes" showintaskbar="yes"
+ singleinstance="yes" sysmenu="yes" version="1.0" windowstate="normal" scroll="no">
+<!--hta:application id="oHTA" applicationname="Xuui Shell"
  border="none" borderstyle="normal" caption="yes" icon="Resources/icon.ico"
  maximizebutton="yes" minimizebutton="yes" showintaskbar="yes"
- singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no">
+ singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no"-->
 <link href="Frameworks/bootstrap.css" rel="stylesheet">
 <link href="Resources/style.css" rel="stylesheet">
 <script type="text/javascript">
@@ -18,25 +22,28 @@ window.resizeTo(1024,768)
 <body>
 <section class="container-fluid desktop">
   <div class="row">
-    <div class="col-xs-1">
+    <div class="col-xs-2">
       <div class="icon">
         <a href="#DiskModal" data-toggle="modal">
           <i class="glyphicon glyphicon-hdd"></i>
-          <span>Files</span>
+          <span>文件管理</span>
         </a>
       </div>
       <div class="icon">
         <i class="glyphicon glyphicon-trash"></i>
-        <span>trash</span>
+        <span>回收站</span>
       </div>
       <div class="icon">
         <i class="glyphicon glyphicon-print"></i>
-        <span>print</span>
+        <span>打印机</span>
       </div>
     </div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
+    <div class="col-xs-2">
+      <div class="icon">
+        <i class="glyphicon glyphicon-cloud-download"></i>
+        <span>安装</span>
+      </div>
+	</div>
     <div class="col-xs-1"></div>
     <div class="col-xs-1"></div>
     <div class="col-xs-1"></div>
@@ -54,11 +61,11 @@ window.resizeTo(1024,768)
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="DiskModalLabel">Files</h4>
+        <h4 class="modal-title" id="DiskModalLabel">文件管理器</h4>
       </div>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">ROOT</a></li>
-        <li class="breadcrumb-item active">All Disk</li>
+        <li class="breadcrumb-item"><a href="#">文件管理器</a></li>
+        <li class="breadcrumb-item active">所有硬盘</li>
       </ol>
       <div class="modal-body container-fluid">
         <div class="row">
@@ -124,7 +131,7 @@ window.resizeTo(1024,768)
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for...">
+        <input type="text" class="form-control" placeholder="搜索...">
         <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span>
       </div><!-- /input-group -->
     </form>
@@ -136,7 +143,7 @@ window.resizeTo(1024,768)
           <li><a href="#">系统设置</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="#">重新启动</a></li>
-          <li><a href="#">关闭电源</a></li>
+          <li><a href="#" onclick=" window.close();">关闭电源</a></li>
         </ul>
       </li>
     </ul>

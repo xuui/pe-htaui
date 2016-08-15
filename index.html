@@ -22,11 +22,11 @@ window.resizeTo(1024,768)
 <body>
 <section class="container-fluid desktop">
   <div class="row">
-    <div class="col-xs-1">
+    <div class="col-xs-2">
       <div class="icon">
         <a href="#DiskModal" data-toggle="modal">
           <i class="glyphicon glyphicon-hdd"></i>
-          <span>文件</span>
+          <span>文件管理</span>
         </a>
       </div>
       <div class="icon">
@@ -38,9 +38,12 @@ window.resizeTo(1024,768)
         <span>打印机</span>
       </div>
     </div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
+    <div class="col-xs-2">
+      <div class="icon">
+        <i class="glyphicon glyphicon-cloud-download"></i>
+        <span>安装</span>
+      </div>
+	</div>
     <div class="col-xs-1"></div>
     <div class="col-xs-1"></div>
     <div class="col-xs-1"></div>
@@ -140,7 +143,7 @@ window.resizeTo(1024,768)
           <li><a href="#">系统设置</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="#">重新启动</a></li>
-          <li><a href="#">关闭电源</a></li>
+          <li><a href="#" onclick=" window.close();">关闭电源</a></li>
         </ul>
       </li>
     </ul>
