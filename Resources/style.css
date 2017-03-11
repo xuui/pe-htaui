@@ -1,5 +1,6 @@
 html,body{width:100%;height:100%;}
-body{position:relative;background:#eee url(wallpaper.jpg) no-repeat 50% 50%;background-size:cover;font-family:'Helvetica Neue',Helvetica,'Microsoft Yahei','Hiragino Sans GB','WenQuanYi Micro Hei',sans-serif;}
+html{background:#eee url(wallpaper.jpg) no-repeat 50% 50%;background-size:cover;}
+body{position:relative;background:transparent url(background-grid.png);font-family:'Helvetica Neue',Helvetica,'Microsoft Yahei','Hiragino Sans GB','WenQuanYi Micro Hei',sans-serif;}
 a:hover,a:focus{text-decoration:none}
 
 .container-fluid .row{}
