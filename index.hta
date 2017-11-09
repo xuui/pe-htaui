@@ -12,57 +12,63 @@
 <hta:application id="oHTA" applicationname="Xuui Shell"
  border="window" borderstyle="normal" caption="yes" icon="Resources/icon.ico"
  maximizebutton="yes" minimizebutton="yes" showintaskbar="yes"
- singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no">
+ singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no" />
+
 <!--hta:application id="oHTA" applicationname="Xuui Shell"
  border="none" borderstyle="normal" caption="yes" icon="Resources/icon.ico"
  maximizebutton="yes" minimizebutton="yes" showintaskbar="yes"
- singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no"-->
-<link href="Frameworks/bootstrap.css" rel="stylesheet">
-<link href="Resources/style.css" rel="stylesheet">
+ singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no"-->   
 <script Language="VBScript">
 Option Explicit
 Dim HTAShell
 Set HTAShell=CreateObject("WScript.Shell")
 </script>
-<script type="text/javascript">
-window.resizeTo(1024,768)
-</script>
+
+<link href="./Frameworks/bootstrap.min.css" rel="stylesheet">
+<link href="./Resources/ionicons.min.css" rel="stylesheet">
+<link href="./Resources/style.css" rel="stylesheet">
+
 </head>
 <body>
-<section class="container-fluid desktop">
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="icon">
-        <a href="#DiskModal" data-toggle="modal">
-          <i class="glyphicon glyphicon-hdd"></i>
-          <span>文件管理</span>
-        </a>
-      </div>
-      <div class="icon">
-        <i class="glyphicon glyphicon-trash"></i>
-        <span>回收站</span>
-      </div>
-      <div class="icon">
-        <i class="glyphicon glyphicon-print"></i>
-        <span>打印机</span>
-      </div>
-    </div>
-    <div class="col-xs-2">
-      <div class="icon">
-        <i class="glyphicon glyphicon-cloud-download"></i>
-        <span>安装</span>
-      </div>
-	</div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
+<section id="desktop">
+  <div class="item-icon">
+    <a href="#DiskModal" data-toggle="modal">
+      <i class="icon ion-filing"></i>
+      <span>文件管理器</span>
+    </a>
   </div>
-</section>
+  
+  <div class="item-icon">
+    <a href="#" onClick="HTAShell.run('cmd')">
+      <i class="icon ion-ios-paper"></i>
+      <span>命令行</span>
+    </a>
+  </div>
+
+  <div class="item-icon">
+    <a href="#" onClick="HTAShell.run('taskmgr')">
+      <i class="icon ion-clipboard"></i>
+      <span>任务管理器</span>
+    </a>
+  </div>
+
+  <div class="item-icon">
+    <a href="#" onClick="HTAShell.run('notepad')">
+      <i class="icon ion-document-text"></i>
+      <span>记事本</span>
+    </a>
+  </div>
+
+  <div class="item-icon">
+    <a href="#" id="shell-r">
+      <i class="icon ion-xbox"></i>
+      <span>安装</span>
+    </a>
+  </div>
+
+<div id="wpinfo"></div>
+    
+</section><!-- / #desktop -->
 
 <!-- Modal -->
 <div class="modal fade" id="DiskModal" tabindex="-1" role="dialog" aria-labelledby="DiskModalLabel">
@@ -80,37 +86,43 @@ window.resizeTo(1024,768)
         <div class="row">
           <div class="col-xs-3">
             <div class="icon">
-              <i class="glyphicon glyphicon-hdd"></i>
+              <i class="ion-social-windows"></i>
+              <span>X:</span>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="icon">
+              <i class="ion-ios-folder-outline"></i>
               <span>C:</span>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="icon">
-              <i class="glyphicon glyphicon-hdd"></i>
+                <i class="ion-ios-folder-outline"></i>
               <span>D:</span>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="icon">
-              <i class="glyphicon glyphicon-hdd"></i>
+                <i class="ion-ios-folder-outline"></i>
               <span>E:</span>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="icon">
-              <i class="glyphicon glyphicon-hdd"></i>
+                <i class="ion-ios-folder-outline"></i>
               <span>F:</span>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="icon">
-              <i class="glyphicon glyphicon-hdd"></i>
+                <i class="ion-ios-folder-outline"></i>
               <span>G:</span>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="icon">
-              <i class="glyphicon glyphicon-hdd"></i>
+                <i class="ion-ios-folder-outline"></i>
               <span>H:</span>
             </div>
           </div>
@@ -126,43 +138,93 @@ window.resizeTo(1024,768)
   <div class="container-fluid">
     <ul class="nav navbar-nav left-navbar">
       <li class="dropup">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-th"></i> <!--span class="caret">&#9776;</span--></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-ios-keypad"></i> <!--span class="caret">&#9776;</span--></a>
         <!--div class="dropdown-menu">
           sfsfsdf
         </div-->
         <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
+          <li><a href="#">文件管理器</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
+          <li><a href="#" onClick="HTAShell.run('cmd')">命令行</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
+          <li><a href="#" onClick="HTAShell.run('taskmgr')">任务管理器</a></li>
         </ul>
       </li>
     </ul>
     <form class="navbar-form navbar-left hidden-xs" role="search">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="搜索...">
-        <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span>
+        <input type="text" class="form-control" placeholder="command...">
+        <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="ion-android-search"></i></button></span>
       </div><!-- /input-group -->
     </form>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropup">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-option-vertical"></i> <!--span class="caret"></span--></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i> <!--span class="caret"></span--></a>
         <ul class="dropdown-menu">
           <li><a href="#">调整时间</a></li>
           <li><a href="#">系统设置</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#">重新启动</a></li>
-          <li><a href="#" onclick=" window.close();">关闭电源</a></li>
+          <li><a href="#" onClick="HTAShell.run('wpeutil Reboot')">重新启动</a></li>
+          <li><a href="#" onclick="HTAShell.run('wpeutil Shutdown')">关闭电源</a></li>
+          <li><a href="#" onclick="self.close()">Close</a></li>
         </ul>
       </li>
     </ul>
   </div>
 </nav>
 </footer>
-<script src="Frameworks/jquery.min.js"></script>
-<script src="Frameworks/bootstrap.min.js"></script>
+
+<script src="./Frameworks/jquery.min.js"></script>
+<script src="./Frameworks/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+(function($){
+
+//$('#wpinfo').append("<p>jQuery !!!</p>");
+//$('#wpinfo').append("<p>UserAgent: "+ navigator.userAgent + "</p>");
+//$('#wpinfo').append("<p>Version: "+ navigator.appVersion + "</p>");
+//$('#wpinfo').append("<p>: "+ navigator.appName+navigator.appVersion + "</p>");
+//$('#wpinfo').append(navigator.appName+navigator.appVersion);
+$('#shell-r').click(function(e){
+  pe_run('cmd');
+});
+
+
+function wshell(){
+  try{
+    return new ActiveXObject("WScript.Shell");
+  }catch(e){
+    alert("不支持 [WScript.Shell]");
+    return null;
+  }
+}
+function pe_exec(cmd){
+  if(cmd!=''){
+    try{
+      oExec=wshell().Exec(cmd);
+    }catch(e){
+      alert("[" + cmd + "]" + e.description);
+      return false;
+    }
+  }
+
+  if(oExec.status==0){
+    setTimeout("pe_exec('')",100);
+  }else{
+    alert(oExec.StdOut.Readall(),true);
+    freeRam();
+  }
+
+}
+
+function pe_run(cmd){
+  if(cmd!=''){
+    wshell().run(cmd);
+  }
+}
+
+})(jQuery);
+</script>
+
 </body>
 </html>
