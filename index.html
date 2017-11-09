@@ -17,16 +17,11 @@
 <!--hta:application id="oHTA" applicationname="Xuui Shell"
  border="none" borderstyle="normal" caption="yes" icon="Resources/icon.ico"
  maximizebutton="yes" minimizebutton="yes" showintaskbar="yes"
- singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no"-->   
-<script Language="VBScript">
-Option Explicit
-Dim HTAShell
-Set HTAShell=CreateObject("WScript.Shell")
-</script>
-
-<link href="./Frameworks/bootstrap.min.css" rel="stylesheet">
-<link href="./Resources/ionicons.min.css" rel="stylesheet">
-<link href="./Resources/style.css" rel="stylesheet">
+ singleinstance="yes" sysmenu="yes" version="1.0" windowstate="maximize" scroll="no"-->
+ 
+<link href="Frameworks/bootstrap.min.css" rel="stylesheet">
+<link href="Resources/ionicons.min.css" rel="stylesheet">
+<link href="Resources/style.css" rel="stylesheet">
 
 </head>
 <body>
@@ -39,34 +34,34 @@ Set HTAShell=CreateObject("WScript.Shell")
   </div>
   
   <div class="item-icon">
-    <a href="#" onClick="HTAShell.run('cmd')">
+    <a href="#" id="shell-cmde">
       <i class="icon ion-ios-paper"></i>
       <span>命令行</span>
     </a>
   </div>
 
   <div class="item-icon">
-    <a href="#" onClick="HTAShell.run('taskmgr')">
+    <a href="#" id="shell-taskmgre">
       <i class="icon ion-clipboard"></i>
       <span>任务管理器</span>
     </a>
   </div>
 
   <div class="item-icon">
-    <a href="#" onClick="HTAShell.run('notepad')">
+    <a href="#" id="shell-notepad">
       <i class="icon ion-document-text"></i>
       <span>记事本</span>
     </a>
   </div>
 
   <div class="item-icon">
-    <a href="#" id="shell-r">
+    <a href="#" id="shell-install">
       <i class="icon ion-xbox"></i>
       <span>安装</span>
     </a>
   </div>
 
-<div id="wpinfo"></div>
+  <div id="wpinfo"></div>
     
 </section><!-- / #desktop -->
 
@@ -145,9 +140,9 @@ Set HTAShell=CreateObject("WScript.Shell")
         <ul class="dropdown-menu">
           <li><a href="#">文件管理器</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#" onClick="HTAShell.run('cmd')">命令行</a></li>
+          <li><a href="#" id="shell-cmd">命令行</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#" onClick="HTAShell.run('taskmgr')">任务管理器</a></li>
+          <li><a href="#" id="shell-taskmgr">任务管理器</a></li>
         </ul>
       </li>
     </ul>
@@ -164,9 +159,9 @@ Set HTAShell=CreateObject("WScript.Shell")
           <li><a href="#">调整时间</a></li>
           <li><a href="#">系统设置</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#" onClick="HTAShell.run('wpeutil Reboot')">重新启动</a></li>
-          <li><a href="#" onclick="HTAShell.run('wpeutil Shutdown')">关闭电源</a></li>
-          <li><a href="#" onclick="self.close()">Close</a></li>
+          <li><a href="#" id="shell-Reboot">重新启动</a></li>
+          <li><a href="#" id="shell-Shutdown">关闭电源</a></li>
+          <li><a href="#" id="shell-Exit">Exit</a></li>
         </ul>
       </li>
     </ul>
@@ -174,55 +169,12 @@ Set HTAShell=CreateObject("WScript.Shell")
 </nav>
 </footer>
 
-<script src="./Frameworks/jquery.min.js"></script>
-<script src="./Frameworks/bootstrap.min.js"></script>
+<script src="Frameworks/jquery.min.js"></script>
+<script src="Frameworks/bootstrap.min.js"></script>
+<script src="Resources/peshell.js"></script>
 
 <script type="text/javascript">
 (function($){
-
-//$('#wpinfo').append("<p>jQuery !!!</p>");
-//$('#wpinfo').append("<p>UserAgent: "+ navigator.userAgent + "</p>");
-//$('#wpinfo').append("<p>Version: "+ navigator.appVersion + "</p>");
-//$('#wpinfo').append("<p>: "+ navigator.appName+navigator.appVersion + "</p>");
-//$('#wpinfo').append(navigator.appName+navigator.appVersion);
-$('#shell-r').click(function(e){
-  pe_run('cmd');
-});
-
-
-function wshell(){
-  try{
-    return new ActiveXObject("WScript.Shell");
-  }catch(e){
-    alert("不支持 [WScript.Shell]");
-    return null;
-  }
-}
-function pe_exec(cmd){
-  if(cmd!=''){
-    try{
-      oExec=wshell().Exec(cmd);
-    }catch(e){
-      alert("[" + cmd + "]" + e.description);
-      return false;
-    }
-  }
-
-  if(oExec.status==0){
-    setTimeout("pe_exec('')",100);
-  }else{
-    alert(oExec.StdOut.Readall(),true);
-    freeRam();
-  }
-
-}
-
-function pe_run(cmd){
-  if(cmd!=''){
-    wshell().run(cmd);
-  }
-}
-
 })(jQuery);
 </script>
 
